@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Corey | Business, life, and lessons from the trail</title>
+<meta name="description" content="Stories from a founder who connects people who need help with the providers who can help them, and the lessons that come from golf, trails, waves, and snow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist: #EEF2F1;
+    --paper: #FBFCFB;
+    --slate: #16242A;
+    --spruce: #2F5D50;
+    --glacier: #7FA9B5;
+    --blaze: #E8B83D;
+    --muted: #51646A;
+    --line: #C9D6D5;
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --body: "Literata", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --mist: #13201F;
+      --paper: #182726;
+      --slate: #E6EEEC;
+      --spruce: #8CC2AF;
+      --glacier: #5E8C99;
+      --muted: #9DB1B2;
+      --line: #2C403E;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--mist);
+    color: var(--slate);
+    font-family: var(--body);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  a { color: var(--spruce); text-underline-offset: 3px; }
+  a:focus-visible, summary:focus-visible, button:focus-visible {
+    outline: 3px solid var(--blaze);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+  .measure { max-width: 38rem; }
+
+  /* Header */
+  header.site {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 1rem; flex-wrap: wrap; padding: 1.5rem 0;
+  }
+  .name {
+    font-family: var(--display); font-weight: 800; font-stretch: 125%;
+    font-size: 1.25rem; text-decoration: none; color: var(--slate);
+  }
+  nav ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+  nav a {
+    font-family: var(--display); font-size: 0.95rem; font-weight: 500;
+    color: var(--slate); text-decoration: none;
+  }
+  nav a:hover { color: var(--spruce); text-decoration: underline; }
+
+  /* Hero: the one bold moment, a topo map */
+  .hero { position: relative; overflow: hidden; padding: 5rem 0 6rem; }
+  .hero svg.topo {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .hero svg.topo path { fill: none; stroke: var(--glacier); stroke-width: 1.1; opacity: 0.55; }
+  .hero svg.topo path.index { stroke: var(--spruce); stroke-width: 1.6; opacity: 0.7; }
+  .hero .inner { position: relative; }
+  .hero h1 {
+    font-family: var(--display); font-weight: 800; font-stretch: 112%;
+    font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 0.98;
+    letter-spacing: -0.02em; margin: 0 0 1.75rem; max-width: 14ch;
+  }
+  .hero p { font-size: 1.25rem; max-width: 34rem; margin: 0; color: var(--slate); }
+  .blaze {
+    display: inline-block; width: 0.9rem; height: 1.6rem; background: var(--blaze);
+    margin-right: 0.75rem; vertical-align: -0.25rem; border-radius: 1px;
+  }
+
+  section { padding: 4.5rem 0; border-top: 1px solid var(--line); }
+  h2 {
+    font-family: var(--display); font-weight: 700; font-stretch: 100%;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem); line-height: 1.1; margin: 0 0 1rem;
+  }
+  .lede { color: var(--muted); margin: 0 0 2.5rem; }
+
+  /* Series */
+  .series-head { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; margin-bottom: 2.5rem; }
+  .scores {
+    display: flex; gap: 1.5rem; font-family: var(--display); font-stretch: 75%;
+    font-weight: 700; line-height: 1;
+  }
+  .scores div { text-align: center; }
+  .scores b { display: block; font-size: 3.25rem; }
+  .scores small { font-family: var(--body); font-weight: 400; font-size: 0.85rem; color: var(--muted); }
+  .scores .after b { color: var(--spruce); }
+  .scores .before b { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: var(--glacier); }
+
+  .parts { border-left: 2px solid var(--line); margin-left: 0.5rem; }
+  details.part { position: relative; padding: 0 0 2rem 2rem; }
+  details.part::before {
+    content: ""; position: absolute; left: -0.55rem; top: 0.55rem;
+    width: 0.9rem; height: 0.9rem; border-radius: 50%;
+    background: var(--mist); border: 2px solid var(--spruce);
+  }
+  details.part[open]::before { background: var(--spruce); }
+  summary {
+    cursor: pointer; list-style: none;
+    font-family: var(--display); font-weight: 600; font-size: 1.3rem; line-height: 1.3;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary .part-no { display: block; font-weight: 500; font-size: 0.95rem; color: var(--muted); margin-bottom: 0.2rem; }
+  summary .hint { font-family: var(--body); font-weight: 400; font-size: 1rem; color: var(--muted); display: block; margin-top: 0.25rem; }
+  .story {
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 1.75rem 2rem; margin-top: 1.25rem; max-width: 40rem;
+  }
+  .story p { margin: 0 0 1.1rem; }
+  .story p:last-child { margin-bottom: 0; }
+  .story .ask {
+    font-style: italic; border-top: 1px solid var(--line); padding-top: 1.1rem; color: var(--spruce);
+  }
+
+  /* Coming up */
+  .next { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2.5rem; }
+  .next h3 { font-family: var(--display); font-weight: 700; font-size: 1.3rem; margin: 0 0 0.5rem; }
+  .next p { margin: 0; color: var(--muted); }
+  .next .when { font-family: var(--display); font-size: 0.95rem; color: var(--spruce); font-weight: 600; margin-bottom: 0.4rem; }
+
+  /* About */
+  .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 3rem; }
+  .about p { margin: 0 0 1.2rem; }
+  .pursuits { list-style: none; padding: 0; margin: 0; font-family: var(--display); font-size: 1.05rem; line-height: 2; }
+  .pursuits li { border-bottom: 1px solid var(--line); }
+
+  /* Share */
+  .share { background: #16242A; color: #EEF2F1; border-top: none; }
+  .share h2 { color: #EEF2F1; }
+  .share .lede { color: #B8C8C9; }
+  .prompts { list-style: none; padding: 0; margin: 0 0 2.5rem; max-width: 40rem; }
+  .prompts li { padding: 0.9rem 0; border-bottom: 1px solid #33474C; font-size: 1.15rem; }
+  .button {
+    display: inline-block; background: var(--blaze); color: #16242A;
+    font-family: var(--display); font-weight: 700; font-size: 1.05rem;
+    padding: 0.85rem 1.4rem; text-decoration: none; border-radius: 3px;
+  }
+  .button:hover { background: #F2C955; }
+
+  footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
+
+  @media (max-width: 720px) {
+    .series-head, .about { grid-template-columns: 1fr; }
+    .story { padding: 1.25rem; }
+    nav ul { gap: 1rem; }
+    .hero { padding: 3rem 0 4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site">
+    <a class="name" href="#top">Corey</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#share">Share yours</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<main id="top">
+  <div class="hero">
+    <svg class="topo" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 600"></svg>
+    <div class="wrap inner">
+      <h1>Business and life, where they collide.</h1>
+      <p><span class="blaze" aria-hidden="true"></span>I'm a founder who connects people looking for help with the providers who can help them. These are the stories and lessons I pick up along the way, on the course, on the trail, and at work.</p>
+    </div>
+  </div>
+
+  <section id="stories">
+    <div class="wrap">
+      <div class="series-head">
+        <div class="measure">
+          <h2>Golf weekend: Saturday 97 to Sunday 78</h2>
+          <p class="lede" style="margin-bottom:0">My first round ever under 80, less than 24 hours after one of my worst. Four short stories about showing up, three strangers, and what the round was really about.</p>
+        </div>
+        <div class="scores" aria-label="Saturday 97, Sunday 78">
+          <div class="before"><b>97</b><small>Saturday</small></div>
+          <div class="after"><b>78</b><small>Sunday</small></div>
+        </div>
+      </div>
+
+      <div class="parts">
+        <details class="part" open>
+          <summary><span class="part-no">Part 1</span>The comeback<span class="hint">I almost skipped the round.</span></summary>
+          <div class="story">
+            <p>On Saturday I shot a 97, including a 10 on one hole. I went to the range afterward, frustrated, and seriously thought about skipping my tee time the next morning.</p>
+            <p>I went anyway. I got paired off the wait list with three strangers: a barefoot former Marine, a guy I'd played with once before, and a serious guy who'd randomly break into song.</p>
+            <p>Less than 24 hours after one of my worst rounds, I shot 78. The first time I've ever broken 80.</p>
+            <p>Even par on the front nine. The back nine got shaky with a penalty and a double on 16, then I answered with a birdie on 17.</p>
+            <p>My business has had its own 97. A while back, I got scammed out of $15,000. It stung, and it would have been easy to pull back and play it safe. Instead, I doubled down, tightened up how I vet partners, and kept building. The business has grown since.</p>
+            <p>A bad day isn't the verdict. Showing up the next day is the whole game.</p>
+            <p class="ask">What's a time you almost didn't show up, and you're glad you did?</p>
+          </div>
+        </details>
+
+        <details class="part">
+          <summary><span class="part-no">Part 2</span>Dan, unfiltered<span class="hint">Barefoot, and a swim in the waterfall.</span></summary>
+          <div class="story">
+            <p>Dan showed up to the clubhouse in sandals. On the first tee, he kicked them off and played the whole round barefoot, spinning through his swing like a whirling dervish. Between 12 and 13, he took a swim in the waterfall. He played pretty well, too.</p>
+            <p>What stuck with me was how completely himself he was. No filter, no worrying about what anyone thought. It was contagious, and it probably loosened me up more than any swing thought on the way to my best round ever.</p>
+            <p>I'm working on putting myself out there more, and Dan is a good reminder that the people you remember are the ones who show up as themselves.</p>
+            <p class="ask">Who's someone who reminded you it's okay to just be yourself?</p>
+          </div>
+        </details>
+
+        <details class="part">
+          <summary><span class="part-no">Part 3</span>TJ and the Matts<span class="hint">A round I never got to finish.</span></summary>
+          <div class="story">
+            <p>The first time I played with TJ, he brought his buddy Matt, from Long Island. I'm from Long Island. And almost every one of my best friends, including my brother, is named Matt or something that rhymes with it. Some people collect golf balls. I apparently collect Matts.</p>
+            <p>That day, I was in the middle of one of my best rounds ever when I had to walk off on 16 to pick my wife up from the airport. This weekend, I'd just dropped her off at the airport, got paired with TJ again, and finally finished the job: my first round under 80.</p>
+            <p class="ask">What's the strangest coincidence that led to a great connection for you?</p>
+          </div>
+        </details>
+
+        <details class="part">
+          <summary><span class="part-no">Part 4</span>What the round was really about<span class="hint">The 78 is the least interesting part.</span></summary>
+          <div class="story">
+            <p>Looking back on the best round of golf I've ever played, the 78 is the least interesting part.</p>
+            <p>What I remember is everything around it. I almost didn't show up after shooting a 97 the day before. I got paired with three strangers off the wait list. Dan played barefoot and jumped in a waterfall. Kevin, the serious one, would suddenly break into song. And TJ, who I'd met once before on a round I never got to finish, was there when I finally broke 80.</p>
+            <p>None of that happens if I stay home and stew over a bad round.</p>
+            <p>That's the lesson I keep coming back to, on the course and in business. The breakthroughs don't come from the perfect plan. They come from showing up, being yourself, and staying open to the people you meet along the way.</p>
+            <p class="ask">What's one unexpected connection that changed things for you?</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Coming up</h2>
+      <p class="lede measure">Stories in the works.</p>
+      <div class="next">
+        <div>
+          <p class="when">Trip series</p>
+          <h3>Patagonia</h3>
+          <p>Wind, scale, and stepping away from the business. Notes from before, during, and after the trip.</p>
+        </div>
+        <div>
+          <p class="when">Business</p>
+          <h3>The $15,000 lesson</h3>
+          <p>Getting scammed, what I missed, and how I kept growing anyway.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2>About</h2>
+        <ul class="pursuits" aria-label="Where you'll find me">
+          <li>Golf</li>
+          <li>Hiking</li>
+          <li>Mountain and gravel biking</li>
+          <li>Surfing in Costa Rica</li>
+          <li>Snowboarding in Taos</li>
+        </ul>
+      </div>
+      <div class="measure">
+        <p>I connect people who need help with the providers who can help them. My company delivers inbound calls, live transfers, and leads for debt, insurance, financial services, and home services providers, with a focus on real intent and quality over volume.</p>
+        <p>Behind every call is a person dealing with something real: a debt they can't get ahead of, a family that needs coverage, an AC that quit in the middle of a Texas summer. I never lose sight of that, and it shapes how I run my business.</p>
+        <p>I'm happily married, based in Texas, and originally from Long Island. I believe common sense and honest conversation beat picking sides.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="share" class="share">
+    <div class="wrap">
+      <h2>Share your story</h2>
+      <p class="lede measure">I'd love to hear what inspires you, what scares you, and what you've learned. Pick a question, or tell me something else entirely.</p>
+      <ul class="prompts">
+        <li>What's the scariest thing you did in your first year of business?</li>
+        <li>What do you do outside of work that's made you better at your job?</li>
+        <li>What's a fear you had that never came true?</li>
+        <li>Who believed in your business before you did?</li>
+      </ul>
+      <!-- TODO: replace with the email address you want stories sent to -->
+      <a class="button" href="mailto:you@example.com?subject=My%20story">Email me your story</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Corey. Business, life, and lessons from the trail.</p>
+  </div>
+</footer>
+
+<script>
+  // Draw topographic contour lines in the hero, like a trail map.
+  (function () {
+    var svg = document.querySelector('svg.topo');
+    if (!svg) return;
+    var ns = 'http://www.w3.org/2000/svg';
+    var peaks = [
+      { x: 980, y: 250, rings: 10, r: 26, gap: 30, seed: 1.3 },
+      { x: 60, y: 690, rings: 6, r: 30, gap: 34, seed: 2.7 }
+    ];
+    peaks.forEach(function (pk) {
+      for (var i = 0; i < pk.rings; i++) {
+        var r = pk.r + i * pk.gap;
+        var pts = [];
+        var steps = 90;
+        for (var s = 0; s <= steps; s++) {
+          var a = (s / steps) * Math.PI * 2;
+          var wobble =
+            1 +
+            0.16 * Math.sin(3 * a + pk.seed + i * 0.25) +
+            0.09 * Math.sin(5 * a - pk.seed * 2 + i * 0.4) +
+            0.05 * Math.cos(7 * a + i * 0.6);
+          var rr = r * wobble;
+          pts.push([pk.x + Math.cos(a) * rr * 1.35, pk.y + Math.sin(a) * rr]);
+        }
+        var d = 'M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L') + 'Z';
+        var path = document.createElementNS(ns, 'path');
+        path.setAttribute('d', d);
+        if (i % 4 === 3) path.setAttribute('class', 'index');
+        svg.appendChild(path);
+      }
+    });
+  })();
+</script>
+</body>
+</html>
