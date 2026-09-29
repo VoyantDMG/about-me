@@ -8,7 +8,6 @@ A single-page site for stories about business, life, and lessons from the trail.
 
 ## Before going live
 
-- Replace `you@example.com` in the "Share your story" button with the email you want stories sent to.
 - Fill in or confirm the business details in Part 1 (the "how I vet partners" line).
 - Give Dan, TJ, and Kevin a heads-up, since they're named on a public page.
 
